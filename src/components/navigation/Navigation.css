@@ -1,0 +1,20 @@
+.nav {
+    display: flex;
+    align-items: center;
+    margin-right: -10px;
+}
+.nav__item {
+    list-style-type: none;
+    border-radius: 5px;
+    font-size: 18px;
+    text-align: center;
+    background-color: #015965;
+    padding: 5px 10px;
+    transition: .3s;
+    color: white;
+    margin-right: 10px;
+}
+.nav__item:hover {
+    transition: .3s;
+    background-color: #067786;
+}
