@@ -8,7 +8,7 @@
     border-radius: 5px;
     font-size: 18px;
     text-align: center;
-    background-color: #015965;
+    background-color: #0159655f;
     padding: 5px 10px;
     transition: .3s;
     color: white;
@@ -16,5 +16,5 @@
 }
 .nav__item:hover {
     transition: .3s;
-    background-color: #067786;
+    background-color: #06778693;
 }
