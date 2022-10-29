@@ -5,9 +5,9 @@ import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import Root from './routes/Root'
-import ErrorPage from './components/errorPage/Error-page';
-import Timer from './components/timer/Timer';
-
+import ErrorPage from './routes/errorPage/Error-page';
+import Setting from './routes/setting/Setting';
+import Report from './routes/report/Report'
 
 const router = createBrowserRouter([
   {
@@ -16,9 +16,13 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/",
-        element: <Timer />,
-      }
+        path: "/report",
+        element: <Report />,
+      },
+      {
+        path: "/setting",
+        element: <Setting />,
+      },
     ]
   },
 ]);

@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
 import './Timer.css'
 
-import circle from '../images//icons8-перезагрузка-80.png'
-import TimerNav from '../timerNav/TimerNav';
-import TimerButton from '../timerButton/TimerButton';
-import { useEffect } from 'react';
+import circle from '../../images/icons8-перезагрузка-80.png'
+import TimerNav from '../../components/timerNav/TimerNav';
+import TimerButton from '../../components/timerButton/TimerButton';
+//import { useEffect } from 'react';
 
 function Timer(props) {
 
-    const [count, setCount] = useState(0);
-
-
+  //  const [count, setCount] = useState(0);
     
     // useEffect(() => {
     //     setInterval((i) => {
@@ -20,12 +18,14 @@ function Timer(props) {
 
     // })
 
+    const {timePomo, timeBreak, timeLongBreak} = props
+
     return (
         <div className='timer'>
             <div className="timer__circle">
                 <img src={circle} alt="circle" />
             </div>
-            <p className='timer__title'>30:00</p>
+            <p className='timer__title'>{timePomo}</p>
             <TimerButton />
             <TimerNav />
         </div>
