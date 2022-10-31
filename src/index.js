@@ -5,7 +5,7 @@ import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import Root from './routes/Root'
-import ErrorPage from './routes/errorPage/Error-page';
+import ErrorPage from './routes/errorPage/ErrorPage';
 import Setting from './routes/setting/Setting';
 import Report from './routes/report/Report'
 

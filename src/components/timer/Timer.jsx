@@ -18,15 +18,27 @@ function Timer(props) {
 
     // })
 
-    const {timePomo, timeBreak, timeLongBreak} = props
+    const {minutes, seconds, setTimerRun} = props
+
+    let timer = `${minutes}:${seconds}`
+
+    if (seconds < 10) {
+        timer = `${minutes}: 0${seconds}`
+    } else if (minutes < 10) {
+        timer = `0${minutes}: ${seconds}`
+    } else if (minutes < 10 & seconds < 10) {
+        timer = `0${minutes}: 0${seconds}`
+    } else {
+        timer = `${minutes}: ${seconds}`
+    }
 
     return (
         <div className='timer'>
             <div className="timer__circle">
                 <img src={circle} alt="circle" />
             </div>
-            <p className='timer__title'>{timePomo}</p>
-            <TimerButton />
+            <p className='timer__title'>{timer}</p>
+            <TimerButton setTimerRun={setTimerRun}/>
             <TimerNav />
         </div>
     );
