@@ -8,7 +8,8 @@ function Setting(props) {
     const {
             timePomo, setTimePomo,
             timeBreak, setTimeBreak, 
-            timeLongBreak, SetTimeLongBreak
+            timeLongBreak, setTimeLongBreak,
+            saveSetting
         } = props
 
     return (
@@ -25,15 +26,24 @@ function Setting(props) {
                 <div className='setting__bottom'>                    
                     <div className='setting__timer'>
                         <p>Pomodoro</p>
-                        <SettingInput inputValue={timePomo} valueChanger={setTimePomo}/>
+                        <SettingInput 
+                            inputValue={timePomo} 
+                            valueChanger={setTimePomo}
+                        />
                     </div>
                     <div className='setting__timer'>
                         <p>Short Break</p>
-                        <SettingInput inputValue={timeBreak} valueChanger={setTimeBreak}/>
+                        <SettingInput 
+                            inputValue={timeBreak} 
+                            valueChanger={setTimeBreak}
+                            />
                     </div>
                     <div className='setting__timer'>
                         <p>Long Break</p>                        
-                        <SettingInput inputValue={timeLongBreak} valueChanger={SetTimeLongBreak}/>
+                        <SettingInput 
+                        inputValue={timeLongBreak} 
+                        valueChanger={setTimeLongBreak}
+                        />
                     </div>
                 </div>
             </div>

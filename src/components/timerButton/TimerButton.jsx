@@ -1,17 +1,20 @@
+import { useEffect } from 'react';
 import './TimerButton.css'
 
 function TimerButton(props) {
 
-    const startTimer = () => {
-        props.setTimerRun(true)
-    }
+    let btnName = 'Start';
+
+        if (props.paused) {
+            btnName = 'Stop'
+        } else { btnName = 'Start' }
 
     return (
         <button 
             className="timer__start"
-            onClick={startTimer}
+            onClick={props.pause}
         >
-                Start
+                {btnName}
         </button>
     );
 }
