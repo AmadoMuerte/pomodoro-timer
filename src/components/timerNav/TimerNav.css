@@ -1,0 +1,24 @@
+.timerNav {
+    margin: 0  0 15px 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.timerNav__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    transition: .2s;
+    color: white;
+    background-color: #015965;
+    border: none;
+    padding: 10px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+} 
+
+.timerNav__item:hover {
+    background-color: #133c41;
+}

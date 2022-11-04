@@ -27,6 +27,7 @@ function App(props) {
     const [paused, setPaused] = useState(false)
     
 
+    //push to localStorage
     const pushTimerToStorage = () => {
         const timer = {minutes, seconds, timerMode}
         localStorage.setItem("timer", JSON.stringify(timer))
@@ -37,10 +38,10 @@ function App(props) {
         localStorage.setItem("setting", JSON.stringify(setting))
     }
 
-    const resetTimer = (mode) => {
+    const resetTimer = () => {
         setMinutes(timePomo)
         setSeconds(0)
-        setTimerMode(mode)
+        setPaused(false)
     }
 
     const tick = () => {
@@ -50,10 +51,9 @@ function App(props) {
             if (seconds === 0) {
                 setMinutes(minutes - 1)
                 setSeconds(59)
-                
             }
-            if (minutes <= 0) {
-                setPaused(false)
+            if (minutes === 0 && seconds === 1) {
+                resetTimer()
             }
         }
     }
@@ -63,11 +63,11 @@ function App(props) {
         if (seconds < 10) {
             title = `${minutes}:0${seconds}`
         } else if (minutes < 10) {
-            title = `0${minutes}: ${seconds}`
+            title = `0${minutes}:${seconds}`
         } else if (minutes < 10 && seconds < 10) {
             title = `0${minutes}:0${seconds}`
         } else {
-            title = `${minutes}: ${seconds}`
+            title = `${minutes}:${seconds}`
         }
         return title
     }
@@ -105,6 +105,7 @@ function App(props) {
                                         timeLongBreak={timeLongBreak}
                                         setTimeLongBreak={setTimeLongBreak}
                                         saveSetting={pushSettingToStorage}
+                                        resetTimer={resetTimer}
                                     />
                                 }
                         /> 

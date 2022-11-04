@@ -27,15 +27,16 @@ function Timer(props) {
     if (seconds < 10) {
         timer = `${minutes}:0${seconds}`
     } else if (minutes < 10) {
-        timer = `0${minutes}: ${seconds}`
+        timer = `0${minutes}:${seconds}`
     } else if (minutes < 10 && seconds < 10) {
         timer = `0${minutes}:0${seconds}`
     } else {
-        timer = `${minutes}: ${seconds}`
+        timer = `${minutes}:${seconds}`
     }
 
     return (
         <div className='timer'>
+            <TimerNav />
             <div className="timer__circle">
                 <img src={circle} alt="circle" />
             </div>
@@ -44,7 +45,7 @@ function Timer(props) {
                 pause={pause}
                 paused={paused}
             />
-            <TimerNav />
+            
         </div>
     );
 }

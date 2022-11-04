@@ -1,22 +1,23 @@
 .timer {
+    max-width: 500px;
     text-align: center;
-    padding: 20px 10px;
+    padding: 20px 0px;
     margin: 0 auto;
-    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .timer__circle img {
-    width: 200px;
+    width: 250px;
     height: auto;
     animation: circle-run 2s ease-in-out infinite;
     
 }
 
 .timer__title {
+    color: rgb(255, 255, 255);
     font-size: 90px;
 }
-
-
 
 @keyframes circle-run {
  0%{transform: rotate(-360deg);}

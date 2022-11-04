@@ -1,11 +1,9 @@
 .header {
-    height: 5vh;
     position: relative;
     background-color: #5FC0CE;
 }
 
 .header__inner {
-    height: 5vh;
     padding: 5px;
     display: flex;
     justify-content: space-around;
