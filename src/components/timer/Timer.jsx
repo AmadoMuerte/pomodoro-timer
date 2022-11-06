@@ -10,15 +10,14 @@ function Timer(props) {
 
     const {
             minutes, seconds, setPaused, paused,
-            resetTimer, setTimerMode
+            setTimerMode, intervalPassed, timerMode
         } = props
     const pause = () => { 
         if (paused) { 
             let ask = window.confirm('do you want to finish?')
             if (ask) {                  
-                resetTimer()
+                setPaused(false)
                 // localStorage.removeItem('timer')
-                
             }
         } else setPaused(true)
     }
@@ -39,16 +38,18 @@ function Timer(props) {
         <div className='timer'>
             <TimerNav
                 setTimerMode={setTimerMode}
-             />             
+                timerMode={timerMode}                
+             />                          
             <div className="timer__circle">
                 <img src={circle} alt="circle" />
-            </div>
+            </div>            
             <p className='timer__title'>{timer}</p>
+            
             <TimerButton 
                 pause={pause}
                 paused={paused}
             />
-            
+            <div className='timer__interval-passed'>#{intervalPassed}</div>
         </div>
     );
 }

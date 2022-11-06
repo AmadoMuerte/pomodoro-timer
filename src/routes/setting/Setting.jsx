@@ -9,7 +9,7 @@ function Setting(props) {
             timePomo, setTimePomo,
             timeBreak, setTimeBreak, 
             timeLongBreak, setTimeLongBreak,
-            saveSetting
+            saveSetting, longBreakInterval, setLongBreakInterval
             
         } = props
 
@@ -25,7 +25,11 @@ function Setting(props) {
                         <p>
                             Timer setting
                         </p>
-                        <NavLink className={'setting__btnBack'} to={`/`}>
+                        <NavLink 
+                            className={'setting__btnBack'} 
+                            to={`/`}
+                            onClick={funcSaveSetting}
+                        >
                             <p>X</p>
                         </NavLink>
                     </div>
@@ -51,15 +55,15 @@ function Setting(props) {
                             valueChanger={setTimeLongBreak}
                             />
                         </div>
+                        <div className='setting__timer'>
+                            <p>Long Break Interval</p>                        
+                            <SettingInput 
+                            inputValue={longBreakInterval} 
+                            valueChanger={setLongBreakInterval}
+                            />
+                        </div>
                     </div>
-                </div>
-                <NavLink 
-                    onClick={funcSaveSetting} 
-                    className='setting__btnSave' 
-                    to={`/`}
-                >
-                    <p>save</p>
-                </NavLink>                                                                            
+                </div>                                                                      
             </div>
         </div>
     );

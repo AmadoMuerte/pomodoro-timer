@@ -9,16 +9,33 @@ import ErrorPage from '../../routes/errorPage/ErrorPage'
 function App(props) {
 
     //localStorageSetting
-    let storageSettings = {timePomo: 30, timeBreak: 5, timeLongBreak: 15}
-    if (localStorage.setting) storageSettings = JSON.parse(localStorage.getItem('setting'))
+    let storageSettings = 
+    {
+        timePomo: 30, timeBreak: 5,
+        timeLongBreak: 15, longBreakInterval: 4,
+        intervalPassed: 0
+    }
+ if (localStorage.setting) storageSettings = JSON.parse(localStorage.getItem('setting'))
     //settings
     const [timePomo, setTimePomo] = useState(storageSettings.timePomo)
     const [timeBreak, setTimeBreak] = useState(storageSettings.timeBreak)
     const [timeLongBreak, setTimeLongBreak] = useState(storageSettings.timeLongBreak)
-    
+    const [longBreakInterval, setLongBreakInterval] = useState(storageSettings.longBreakInterval)
+    const [intervalPassed, setIntervalPassed] = useState(storageSettings.intervalPassed)
+
+    const pushSettingToStorage = () => {
+        const setting = 
+        {
+            timePomo, timeBreak, timeLongBreak,
+            longBreakInterval, intervalPassed
+        }   
+        localStorage.setItem("setting", JSON.stringify(setting))
+    }
+    pushSettingToStorage()
+
     //localStorageTimer
     let storageTimer = {minutes: timePomo, seconds: 0, timerMode: 'work'} 
-    // if (localStorage.timer) storageTimer = JSON.parse(localStorage.getItem('timer'))
+    //if (localStorage.timer) storageTimer = JSON.parse(localStorage.getItem('timer'))
 
     //timer
     const [minutes, setMinutes] = useState(storageTimer.minutes)
@@ -32,14 +49,10 @@ function App(props) {
     //     localStorage.setItem("timer", JSON.stringify(timer))
     // }
 
-    const pushSettingToStorage = () => {
-        const setting = {timePomo, timeBreak, timeLongBreak}   
-        localStorage.setItem("setting", JSON.stringify(setting))
-    }
-
     const resetTimer = () => {
-        if (timerMode === 'work') {
+        if (timerMode === 'work' && intervalPassed !== longBreakInterval) {
             setMinutes(timePomo)
+            
         } else if (timerMode === 'break') {
             setMinutes(timeBreak)
         } else if (timerMode === 'longBreak') {
@@ -49,16 +62,40 @@ function App(props) {
         setPaused(false)
     }
 
+    const checkTimerMode = () => {
+        if (timerMode === 'work') {
+            setIntervalPassed(intervalPassed + 1)
+            setTimerMode('break')
+        }
+
+        if (intervalPassed >= longBreakInterval) {
+            setTimerMode('longBreak')
+        }
+        
+        if (timerMode === 'longBreak') {
+            setTimerMode('work')
+            setIntervalPassed(0)
+        }
+
+        if (timerMode === 'break') {
+            setTimerMode('work')
+        }
+
+          
+        setPaused(false)
+    }
+
     // timer tick interval
     const tick = () => {
         if (paused) {
+           // pushTimerToStorage()
             setSeconds(seconds -1)
             if (seconds === 0) {
                 setMinutes(minutes - 1)
                 setSeconds(59)
             }
-            if (minutes === 0 && seconds === 1) {
-                resetTimer()
+            if (minutes === 0 && seconds === 1) {  
+                checkTimerMode()
             }
         }
     }
@@ -81,9 +118,11 @@ function App(props) {
     useEffect(() => {
         if (!paused) {
             resetTimer()
+            
+        } else {
+            document.title = `Time remaining - ${titleTimes()}`
         }
         const timerID = setInterval(() => tick(), 1000);
-        document.title = `Time remaining - ${titleTimes()}`
         return () => clearInterval(timerID);
       });
 
@@ -96,9 +135,10 @@ function App(props) {
                         minutes={minutes}
                         seconds={seconds}
                         setPaused={setPaused}
-                        paused={paused}
-                        resetTimer={resetTimer}
-                        setTimerMode={setTimerMode}       
+                        paused={paused}                    
+                        setTimerMode={setTimerMode}  
+                        intervalPassed={intervalPassed}   
+                        timerMode={timerMode}  
                     />
                     <Routes>
                         <Route 
@@ -113,7 +153,9 @@ function App(props) {
                                         setTimeBreak={setTimeBreak}
                                         timeLongBreak={timeLongBreak}
                                         setTimeLongBreak={setTimeLongBreak}
-                                        saveSetting={pushSettingToStorage}                                                                          
+                                        saveSetting={pushSettingToStorage} 
+                                        longBreakInterval={longBreakInterval}
+                                        setLongBreakInterval={setLongBreakInterval}                                                                         
                                     />
                                 }
                         /> 

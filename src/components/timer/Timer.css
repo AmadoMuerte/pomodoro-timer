@@ -19,6 +19,15 @@
     font-size: 90px;
 }
 
+.timer__interval-passed {
+    width: 100px;
+    margin: 0 auto;
+    margin-top: 15px;
+    color: black;
+    border-radius: 10px;
+    background-color: rgba(224, 220, 220, 0.211);
+}
+
 @keyframes circle-run {
  0%{transform: rotate(-360deg);}
 }

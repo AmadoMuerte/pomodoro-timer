@@ -19,6 +19,10 @@
     cursor: pointer;
 } 
 
+.timerNav__item-active {
+    background-color: #183d42;
+}
+
 .timerNav__item:hover {
     background-color: #133c41;
 }
