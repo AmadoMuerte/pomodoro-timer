@@ -9,13 +9,12 @@ function Setting(props) {
             timePomo, setTimePomo,
             timeBreak, setTimeBreak, 
             timeLongBreak, setTimeLongBreak,
-            saveSetting, resetTimer
+            saveSetting
             
         } = props
 
     const funcSaveSetting = () => {
         saveSetting()
-        resetTimer()
     }
 
     return (

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+
 import './Timer.css'
 
 import circle from '../../images/icons8-перезагрузка-80.png'
@@ -8,15 +8,16 @@ import TimerButton from '../../components/timerButton/TimerButton';
 
 function Timer(props) {
 
-    const {minutes, seconds, setPaused, paused, resetTimer} = props
-
+    const {
+            minutes, seconds, setPaused, paused,
+            resetTimer, setTimerMode
+        } = props
     const pause = () => { 
         if (paused) { 
             let ask = window.confirm('do you want to finish?')
-            if (ask) {  
-                setPaused(false)
-                resetTimer('work')
-                localStorage.removeItem('timer')
+            if (ask) {                  
+                resetTimer()
+                // localStorage.removeItem('timer')
                 
             }
         } else setPaused(true)
@@ -36,7 +37,9 @@ function Timer(props) {
 
     return (
         <div className='timer'>
-            <TimerNav />
+            <TimerNav
+                setTimerMode={setTimerMode}
+             />             
             <div className="timer__circle">
                 <img src={circle} alt="circle" />
             </div>

@@ -18,7 +18,7 @@ function App(props) {
     
     //localStorageTimer
     let storageTimer = {minutes: timePomo, seconds: 0, timerMode: 'work'} 
-    if (localStorage.timer) storageTimer = JSON.parse(localStorage.getItem('timer'))
+    // if (localStorage.timer) storageTimer = JSON.parse(localStorage.getItem('timer'))
 
     //timer
     const [minutes, setMinutes] = useState(storageTimer.minutes)
@@ -26,12 +26,11 @@ function App(props) {
     const [timerMode, setTimerMode] = useState(storageTimer.timerMode) 
     const [paused, setPaused] = useState(false)
     
-
     //push to localStorage
-    const pushTimerToStorage = () => {
-        const timer = {minutes, seconds, timerMode}
-        localStorage.setItem("timer", JSON.stringify(timer))
-    }
+    // const pushTimerToStorage = () => {
+    //     const timer = {minutes, seconds, timerMode}
+    //     localStorage.setItem("timer", JSON.stringify(timer))
+    // }
 
     const pushSettingToStorage = () => {
         const setting = {timePomo, timeBreak, timeLongBreak}   
@@ -39,14 +38,20 @@ function App(props) {
     }
 
     const resetTimer = () => {
-        setMinutes(timePomo)
+        if (timerMode === 'work') {
+            setMinutes(timePomo)
+        } else if (timerMode === 'break') {
+            setMinutes(timeBreak)
+        } else if (timerMode === 'longBreak') {
+            setMinutes(timeLongBreak)
+        }
         setSeconds(0)
         setPaused(false)
     }
 
+    // timer tick interval
     const tick = () => {
         if (paused) {
-            pushTimerToStorage()
             setSeconds(seconds -1)
             if (seconds === 0) {
                 setMinutes(minutes - 1)
@@ -71,9 +76,12 @@ function App(props) {
         }
         return title
     }
-        
+
+
     useEffect(() => {
-       
+        if (!paused) {
+            resetTimer()
+        }
         const timerID = setInterval(() => tick(), 1000);
         document.title = `Time remaining - ${titleTimes()}`
         return () => clearInterval(timerID);
@@ -89,7 +97,8 @@ function App(props) {
                         seconds={seconds}
                         setPaused={setPaused}
                         paused={paused}
-                        resetTimer={resetTimer}               
+                        resetTimer={resetTimer}
+                        setTimerMode={setTimerMode}       
                     />
                     <Routes>
                         <Route 
@@ -104,8 +113,7 @@ function App(props) {
                                         setTimeBreak={setTimeBreak}
                                         timeLongBreak={timeLongBreak}
                                         setTimeLongBreak={setTimeLongBreak}
-                                        saveSetting={pushSettingToStorage}
-                                        resetTimer={resetTimer}
+                                        saveSetting={pushSettingToStorage}                                                                          
                                     />
                                 }
                         /> 
