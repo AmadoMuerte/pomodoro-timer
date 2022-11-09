@@ -2,8 +2,6 @@ import React from 'react';
 import './TimerAnimation.css'
 
 import animetedImg from '../../../images/x.png'
-import animetedImg2 from '../../../images/img.png'
-
 
 function TimerAnimation(props) {
 

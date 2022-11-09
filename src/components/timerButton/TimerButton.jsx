@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import './TimerButton.css'
 
 function TimerButton(props) {

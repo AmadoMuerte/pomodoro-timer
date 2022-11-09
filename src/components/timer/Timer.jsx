@@ -1,13 +1,9 @@
 
 import './Timer.css'
 
-import circle from '../../images/clock.png'
 import TimerNav from '../../components/timerNav/TimerNav';
 import TimerButton from '../../components/timerButton/TimerButton';
 import TimerAnimation from './timerAnimation/TimerAnimation';
-
-
-
 
 function Timer(props) {
 
