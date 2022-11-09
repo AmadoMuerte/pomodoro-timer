@@ -6,6 +6,7 @@ import animetedImg2 from '../../../images/img.png'
 
 
 function TimerAnimation(props) {
+
     return (
         <div className='timerAnimation'>
             <div className="timer__circle">
