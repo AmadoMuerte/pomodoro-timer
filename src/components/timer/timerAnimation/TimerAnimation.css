@@ -1,0 +1,66 @@
+.timerAnimation {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.timer__img-animated {
+    width: 120px;
+    top: 160px;
+    left: -60px;
+    position: absolute;
+    margin: 0 auto;
+    height: auto;
+    animation: 1.5s infinite alternate  margin-left;
+    z-index: 1;
+    transform: rotate(180deg);
+}
+
+.timer__img-animated img {
+    width: 100%;
+}
+
+.timer__img-animated2 {
+    width: 120px;
+    top: 160px;
+    right: -60px;
+    position: absolute;
+    margin: 0 auto;
+    height: auto;
+    animation: 1.5s infinite alternate  margin-right;
+    z-index: 1;
+}
+
+.timer__img-animated2 img {
+    width: 100%;
+    
+}
+
+
+
+.timer__circle {
+    width: 400px;
+    background-image: url(../../../images/clock.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 390px;
+    margin: 0 auto;
+    background-position: center;
+}
+
+.timer__title {
+    text-align: center;
+    padding-top: 130px;
+    color: rgb(1, 1, 1);
+    font-size: 70px;
+}
+
+@keyframes margin-left {
+    0%{margin-left: 0px;}
+    100%{margin-left: -200px}
+   }
+
+@keyframes margin-right {
+0%{margin-right: 0px;}
+100%{margin-right: -200px}
+}

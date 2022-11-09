@@ -1,8 +1,9 @@
 .timer__start {
     transition: .2s;
-    font-size: 40px;
+    font-size: 35px;
     color: white;
-    background-color: #015965;
+    line-height: 30px;
+    background: rgb(34, 5, 18);
     border: none;
     padding: 5px 20px;
     border-radius: 10px;

@@ -1,6 +1,7 @@
 .header {
     position: relative;
-    background-color: #5FC0CE;
+    background-color: rgb(23, 3, 12);
+    z-index: 10;
 }
 
 .header__inner {

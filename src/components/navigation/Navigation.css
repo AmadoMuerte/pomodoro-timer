@@ -2,19 +2,21 @@
     display: flex;
     align-items: center;
     margin-right: -10px;
+    
 }
 .nav__item {
     list-style-type: none;
     border-radius: 5px;
-    font-size: 18px;
+    font-size: 17px;
     text-align: center;
-    background-color: #0159655f;
-    padding: 5px 10px;
+    background-color: rgb(193, 40, 75);
+    padding: 2px 8px;
+    line-height: 25px;
     transition: .3s;
     color: white;
     margin-right: 10px;
 }
 .nav__item:hover {
     transition: .3s;
-    background-color: #07515b93;
+    background-color: rgb(235, 59, 100);
 }

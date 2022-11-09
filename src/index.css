@@ -1,13 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Amita&display=swap');
+
 *{
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Amita', cursive;
 }
 
 .container {
   max-width: 1400px;
-  margin: auto;
+  margin: 0 auto;
   padding: 0 15px;
 }
 
@@ -29,5 +31,7 @@ body {
   height: 100vh;
   position: relative;
   background-color: #1F6B75;
-  padding: 20px 0px;
+  background-image: url(./images//background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }

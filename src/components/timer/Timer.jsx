@@ -1,9 +1,12 @@
 
 import './Timer.css'
 
-import circle from '../../images/icons8-перезагрузка-80.png'
+import circle from '../../images/clock.png'
 import TimerNav from '../../components/timerNav/TimerNav';
 import TimerButton from '../../components/timerButton/TimerButton';
+import TimerAnimation from './timerAnimation/TimerAnimation';
+
+
 
 
 function Timer(props) {
@@ -40,11 +43,9 @@ function Timer(props) {
                 setTimerMode={setTimerMode}
                 timerMode={timerMode}                
              />                          
-            <div className="timer__circle">
-                <img src={circle} alt="circle" />
+            <div className='timer__main'>
+                <TimerAnimation timer={timer}/>
             </div>            
-            <p className='timer__title'>{timer}</p>
-            
             <TimerButton 
                 pause={pause}
                 paused={paused}

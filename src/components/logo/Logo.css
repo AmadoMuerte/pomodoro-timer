@@ -1,5 +1,5 @@
 .logo__item {
-    font-size: 25px;
+    font-size: 20px;
     transition: .3s;
     color: white;
 }
@@ -7,14 +7,6 @@
 .logo__item:hover {
     transition: .3s;
     color: rgb(234, 231, 236);
-}
-
-
-@media (max-width: 390px) {
-    .logo__item {
-        font-size: 20px;
-        transition: .3s;
-    }
 }
 
 @media (max-width: 350px) {

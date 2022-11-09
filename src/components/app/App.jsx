@@ -50,9 +50,8 @@ function App(props) {
     // }
 
     const resetTimer = () => {
-        if (timerMode === 'work' && intervalPassed !== longBreakInterval) {
+        if (timerMode === 'work') {
             setMinutes(timePomo)
-            
         } else if (timerMode === 'break') {
             setMinutes(timeBreak)
         } else if (timerMode === 'longBreak') {
@@ -63,26 +62,19 @@ function App(props) {
     }
 
     const checkTimerMode = () => {
-        if (timerMode === 'work') {
-            setIntervalPassed(intervalPassed + 1)
+        setIntervalPassed(intervalPassed + 1)
+
+        if (intervalPassed === 2) {
+            setTimerMode('longBreak') 
+        } else if (timerMode === 'work') {
             setTimerMode('break')
-        }
-
-        if (intervalPassed >= longBreakInterval) {
-            setTimerMode('longBreak')
-        }
-        
-        if (timerMode === 'longBreak') {
+        } else if (timerMode === 'break') {
+            setIntervalPassed(intervalPassed - 1)
             setTimerMode('work')
+        } else if (timerMode === 'longBreak') {
             setIntervalPassed(0)
-        }
-
-        if (timerMode === 'break') {
             setTimerMode('work')
         }
-
-          
-        setPaused(false)
     }
 
     // timer tick interval
@@ -94,7 +86,8 @@ function App(props) {
                 setMinutes(minutes - 1)
                 setSeconds(59)
             }
-            if (minutes === 0 && seconds === 1) {  
+            if (minutes === 0 && seconds === 0) {  
+                setPaused(false)
                 checkTimerMode()
             }
         }
@@ -120,8 +113,9 @@ function App(props) {
             resetTimer()
             
         } else {
-            document.title = `Time remaining - ${titleTimes()}`
+            document.title = `Time remaining - ${titleTimes()}`            
         }
+        
         const timerID = setInterval(() => tick(), 1000);
         return () => clearInterval(timerID);
       });
