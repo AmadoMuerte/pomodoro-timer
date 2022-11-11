@@ -1,7 +1,11 @@
 .timerAnimation {
-    max-width: 800px;
+    width: 500px;
     margin: 0 auto;
     position: relative;
+}
+
+.timerAnimation img {
+    width: 100%;
 }
 
 .timer__img-animated {
@@ -11,13 +15,8 @@
     position: absolute;
     margin: 0 auto;
     height: auto;
-    animation: 1.5s infinite alternate  margin-left;
     z-index: 1;
     transform: rotate(180deg);
-}
-
-.timer__img-animated img {
-    width: 100%;
 }
 
 .timer__img-animated2 {
@@ -25,11 +24,42 @@
     top: 160px;
     right: -60px;
     position: absolute;
-    margin: 0 auto;
-    height: auto;
-    animation: 1.5s infinite alternate  margin-right;
     z-index: 1;
 }
+
+.timer__img-animated3 {
+    top: 20px;
+    left: 30px;
+    position: absolute;
+    width: 80px;
+    transform: rotate(90deg);
+}
+
+.timer__img-animated4 {
+    top: 20px;
+    right: 30px;
+    position: absolute;
+    width: 80px;
+    transform: rotate(180deg);
+}
+
+.anim1 {    
+    animation: leftArrow-run 1.5s linear alternate infinite;
+}
+
+.anim2 {
+    animation: rightArrow-run 1.5s linear alternate infinite;
+}
+
+.anim3 {
+    animation: leftCross-run 8s linear alternate infinite; 
+}
+
+.anim4 {
+    animation: rightCross-run 8s linear alternate infinite;
+}
+
+
 
 .timer__img-animated2 img {
     width: 100%;
@@ -55,12 +85,107 @@
     font-size: 70px;
 }
 
-@keyframes margin-left {
-    0%{margin-left: 0px;}
-    100%{margin-left: -200px}
-   }
+@keyframes leftArrow-run {
+    100%{left: -200px}
+}
 
-@keyframes margin-right {
-0%{margin-right: 0px;}
-100%{margin-right: -200px}
+@keyframes rightArrow-run {
+    100%{right: -200px}
+}
+
+@keyframes leftCross-run {
+
+    0% {
+        top: 20px;
+        left: 30px;
+        transform: rotate(90deg);
+    }
+
+    12% {
+        left: -20px;
+    }
+
+    25% {
+        transform: rotate(10deg);
+        top: 280px;
+        left: 30px;
+    }
+
+    37% {
+        top: 350px;
+    }
+
+    50% {
+        top: 280px;
+        left: 400px;
+        transform: rotate(-90deg);
+    }
+
+    62% {
+        left: 430px;
+    }
+
+    75% {
+        top: 20px;
+        left: 400px;
+        transform: rotate(-180deg);
+    }
+
+    87% {
+        top: -30px;
+    }
+
+    100% {
+        top: 20px;
+        left: 30px;
+        transform: rotate(-270deg);
+    }
+}
+
+@keyframes rightCross-run {
+    0% {
+        top: 20px;
+        right: 30px;
+        transform: rotate(180deg);
+    }
+
+    12% {
+        right: -20px;
+    }
+
+    25% {
+        transform: rotate(270deg);
+        top: 280px;
+        right: 30px;
+    }
+
+    37% {
+        top: 350px;
+    }
+
+    50% {
+        top: 280px;
+        right: 400px;
+        transform: rotate(360deg);
+    }
+
+    62% {
+        right: 430px;
+    }
+
+    75% {
+        top: 20px;
+        right: 400px;
+        transform: rotate(450deg);
+    }
+
+    87% {
+        top: -30px;
+    }
+
+    100% {
+        top: 20px;
+        right: 30px;
+        transform: rotate(540deg);
+    }
 }

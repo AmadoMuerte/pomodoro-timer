@@ -40,7 +40,10 @@ function Timer(props) {
                 timerMode={timerMode}                
              />                          
             <div className='timer__main'>
-                <TimerAnimation timer={timer}/>
+                <TimerAnimation 
+                timer={timer}
+                paused={paused}
+                />
             </div>            
             <TimerButton 
                 pause={pause}
