@@ -3,6 +3,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     margin-right: -15px;
 }
 
@@ -26,4 +27,11 @@
 
 .timerNav__item:hover {
     box-shadow: 2px 2px 2px black;
+}
+
+.timer__interval-passed {
+    width: 100px;
+    color: black;
+    border-radius: 10px;
+    background-color: rgba(224, 220, 220, 0.211);
 }

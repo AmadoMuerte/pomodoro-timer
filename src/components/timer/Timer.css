@@ -1,8 +1,7 @@
 
-
 .timer {    
     text-align: center;
-    padding: 40px 0px;
+    padding: 20px 0px;
     margin: 0 auto;
     border-radius: 10px;
     display: flex;
@@ -12,16 +11,7 @@
 }
 
 .timer__main {
-    margin: 50px 0;
-}
-
-.timer__interval-passed {
-    width: 100px;
-    margin: 0 auto;
-    margin-top: 15px;
-    color: black;
-    border-radius: 10px;
-    background-color: rgba(224, 220, 220, 0.211);
+    margin: 25px 0;
 }
 
 

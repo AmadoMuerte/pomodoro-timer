@@ -15,6 +15,7 @@ function App(props) {
         timeLongBreak: 15, longBreakInterval: 4,
         intervalPassed: 0
     }
+
  if (localStorage.setting) storageSettings = JSON.parse(localStorage.getItem('setting'))
     //settings
     const [timePomo, setTimePomo] = useState(storageSettings.timePomo)
@@ -62,18 +63,21 @@ function App(props) {
     }
 
     const checkTimerMode = () => {
-        setIntervalPassed(intervalPassed + 1)
-
-        if (intervalPassed === 2) {
-            setTimerMode('longBreak') 
-        } else if (timerMode === 'work') {
-            setTimerMode('break')
-        } else if (timerMode === 'break') {
-            setIntervalPassed(intervalPassed - 1)
-            setTimerMode('work')
-        } else if (timerMode === 'longBreak') {
+        if (timerMode === 'work') {
+            setIntervalPassed(intervalPassed + 1)
+            if ( intervalPassed >= (longBreakInterval - 1) ) {
+                setTimerMode('longBreak') 
+                setIntervalPassed(0)
+            } else {
+                setTimerMode('break') 
+            }
+        }
+        if (timerMode === 'break') {
+            setTimerMode('work') 
+        }
+        if (timerMode === 'longBreak') {
             setIntervalPassed(0)
-            setTimerMode('work')
+            setTimerMode('work') 
         }
     }
 
@@ -87,8 +91,11 @@ function App(props) {
                 setSeconds(59)
             }
             if (minutes === 0 && seconds === 0) {  
-                setPaused(false)
+                
+                console.log(intervalPassed)
+                console.log(longBreakInterval)
                 checkTimerMode()
+                setPaused(false)
             }
         }
     }

@@ -6,7 +6,6 @@ import animationImg2 from '../../../images/crossImg.png'
 
 function TimerAnimation(props) {
 
-
     let animationClass1 = 'timer__img-animated'
     let animationClass2 = 'timer__img-animated2'
     let animationClass3 = 'timer__img-animated3'
@@ -35,9 +34,6 @@ function TimerAnimation(props) {
             <div className={animationClass4}>
                 <img src={animationImg2} alt="img animated" />
             </div>
-            {/* <div className='timer__img-animated2'>
-                <img src={animetedImg2} alt="img animated" />
-            </div> */}
         </div>
     );
 }
