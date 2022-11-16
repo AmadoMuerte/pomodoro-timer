@@ -14,6 +14,7 @@
     border-radius: 5px;
     background-color: #5fbfced5;
     padding: 10px 0;
+    max-width: 500px;
     height: 600px;
     display: flex;
     flex-direction: column;
@@ -71,13 +72,15 @@
 
 .setting__bottom {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    margin-right: -10px;
+    padding: 0 15px;
 }
 
 .setting__timer {
-    margin: 0 20px;
-    margin-right: 20px;
+    margin-right: 10px;
     margin-top: 10px;
     display: flex;
     flex-direction: column;

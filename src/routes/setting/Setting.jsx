@@ -19,6 +19,7 @@ function Setting(props) {
 
     return (
         <div className='setting'>
+            <div className='container'>
             <div className='setting__inner'>
                 <div>
                     <div className='setting__head'>
@@ -56,7 +57,7 @@ function Setting(props) {
                             />
                         </div>
                         <div className='setting__timer'>
-                            <p>Long Break Interval</p>                        
+                            <p>Pomodoro Interval</p>                        
                             <SettingInput 
                             inputValue={longBreakInterval} 
                             valueChanger={setLongBreakInterval}
@@ -64,6 +65,7 @@ function Setting(props) {
                         </div>
                     </div>
                 </div>                                                                      
+            </div>
             </div>
         </div>
     );
