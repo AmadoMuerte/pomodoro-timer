@@ -35,3 +35,9 @@
     border-radius: 10px;
     background-color: rgba(224, 220, 220, 0.211);
 }
+
+@media (max-width: 430px) {
+    .timerNav__item {
+        margin-right: 5px;
+    }
+}

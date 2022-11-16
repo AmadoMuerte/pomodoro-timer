@@ -67,7 +67,6 @@
 }
 
 
-
 .timer__circle {
     width: 400px;
     background-image: url(../../../images/clock.png);
@@ -187,5 +186,54 @@
         top: 20px;
         right: 30px;
         transform: rotate(540deg);
+    }
+}
+
+
+@media (max-width: 660px) {
+    .timer__img-animated{
+        width: 0px;
+    }
+    .timer__img-animated2{
+        width: 0px;
+    }
+    .timer__img-animated3{
+        width: 70px;
+    }
+    .timer__img-animated4{
+        width: 70px;
+    }
+    .anim1 {
+        animation: none;
+    }
+    .anim2 {
+        animation: none;
+    }
+    .anim3 {
+        animation: none;
+    }
+    .anim4 {
+        animation: none;
+    }
+}
+
+@media (max-width: 430px) {
+    .timerAnimation {
+        width: 100%}
+    .timer__circle {
+        height: 330px;
+        width: 350px;
+    }
+    .timer__img-animated3{
+        top: 5px;
+        width: 60px;
+    }
+    .timer__img-animated4{
+        top: 5px;
+        width: 60px;
+    }
+    .timer__title {
+        padding-top: 110px;
+        font-size: 58px;
     }
 }

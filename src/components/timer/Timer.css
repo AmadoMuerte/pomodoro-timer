@@ -7,11 +7,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .timer__main {
     margin: 25px 0;
 }
+
+
+@media (max-width: 660px) {
+    .timer__main {
+        margin: 0px 0;
+    }
+}
+
 
 
