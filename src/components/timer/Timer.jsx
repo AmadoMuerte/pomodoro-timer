@@ -9,7 +9,8 @@ function Timer(props) {
 
     const {
             minutes, seconds, setPaused, paused,
-            setTimerMode, intervalPassed, timerMode
+            setTimerMode, intervalPassed, timerMode,
+            longBreakInterval
         } = props
     const pause = () => { 
         if (paused) { 
@@ -49,7 +50,9 @@ function Timer(props) {
                 pause={pause}
                 paused={paused}
             />
-            <div className='timer__interval-passed'>#{intervalPassed}</div>
+            <div className='passedCounter'>
+                {'# ' + intervalPassed + '/' + longBreakInterval}
+            </div>
         </div>
     );
 }

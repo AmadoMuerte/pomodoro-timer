@@ -43,12 +43,25 @@ function App(props) {
     const [seconds, setSeconds] = useState(storageTimer.seconds)
     const [timerMode, setTimerMode] = useState(storageTimer.timerMode) 
     const [paused, setPaused] = useState(false)
-    
     //push to localStorage
     // const pushTimerToStorage = () => {
     //     const timer = {minutes, seconds, timerMode}
     //     localStorage.setItem("timer", JSON.stringify(timer))
     // }
+
+    let reportStorage = {allWorkTime: 0}
+    if (localStorage.report) reportStorage = JSON.parse(localStorage.getItem('report'))
+    //report
+    const [allWorkTime, setAllWorkTime] = useState(reportStorage.allWorkTime)
+
+    const pushReportToStorage = () => {
+        const report = 
+        {
+            allWorkTime,
+        }  
+        localStorage.setItem("report", JSON.stringify(report))
+    }
+    pushReportToStorage()
 
     const resetTimer = () => {
         if (timerMode === 'work') {
@@ -62,8 +75,14 @@ function App(props) {
         setPaused(false)
     }
 
+    const countAllTime = () => {
+            let allTime = Number(allWorkTime) + Number(timePomo)
+            setAllWorkTime(allTime)
+    }
+
     const checkTimerMode = () => {
         if (timerMode === 'work') {
+            countAllTime()
             setIntervalPassed(intervalPassed + 1)
             if ( intervalPassed >= (longBreakInterval - 1) ) {
                 setTimerMode('longBreak') 
@@ -92,8 +111,6 @@ function App(props) {
             }
             if (minutes === 0 && seconds === 0) {  
                 
-                console.log(intervalPassed)
-                console.log(longBreakInterval)
                 checkTimerMode()
                 setPaused(false)
             }
@@ -140,6 +157,7 @@ function App(props) {
                         setTimerMode={setTimerMode}  
                         intervalPassed={intervalPassed}   
                         timerMode={timerMode}  
+                        longBreakInterval={longBreakInterval}
                     />
                     <Routes>
                         <Route 

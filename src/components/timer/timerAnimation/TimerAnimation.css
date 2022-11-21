@@ -59,13 +59,10 @@
     animation: rightCross-run 8s linear alternate infinite;
 }
 
-
-
 .timer__img-animated2 img {
     width: 100%;
     
 }
-
 
 .timer__circle {
     width: 400px;
