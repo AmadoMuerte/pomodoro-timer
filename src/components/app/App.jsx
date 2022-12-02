@@ -5,7 +5,6 @@ import Setting from '../setting/Setting';
 import Timer from '../timer/Timer';
 import Report from '../report/Report';
 
-
 function App(props) {
 
     //localStorageSetting
