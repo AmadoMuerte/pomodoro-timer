@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import Header from '../header/Header';
-import Setting from '../../routes/setting/Setting';
+import Setting from '../setting/Setting';
 import Timer from '../timer/Timer';
-import Report from '../../routes/report/Report';
-import ErrorPage from '../../routes/errorPage/ErrorPage'
+import Report from '../report/Report';
+
 
 function App(props) {
 
@@ -145,48 +145,53 @@ function App(props) {
       });
 
     return (
-        <>
+        <BrowserRouter>
             <Header />
             <main className="main">
                 <div className="container">
-                    <Timer
-                        minutes={minutes}
-                        seconds={seconds}
-                        setPaused={setPaused}
-                        paused={paused}                    
-                        setTimerMode={setTimerMode}  
-                        intervalPassed={intervalPassed}   
-                        timerMode={timerMode}  
-                        longBreakInterval={longBreakInterval}
-                    />
+                    
                     <Routes>
                         <Route 
-                            errorElement={<ErrorPage />}
+                            path='/'
+                            element= {
+                                <Timer
+                                minutes={minutes}
+                                seconds={seconds}
+                                setPaused={setPaused}
+                                paused={paused}                    
+                                setTimerMode={setTimerMode}  
+                                intervalPassed={intervalPassed}   
+                                timerMode={timerMode}  
+                                longBreakInterval={longBreakInterval}
+                                />
+                            }                            
+                        >                            
+                        </Route>
+
+                        <Route                             
                             path="/setting" 
-                            element=
-                                {
-                                    <Setting 
-                                        setTimePomo={setTimePomo}
-                                        timePomo={timePomo}
-                                        timeBreak={timeBreak}
-                                        setTimeBreak={setTimeBreak}
-                                        timeLongBreak={timeLongBreak}
-                                        setTimeLongBreak={setTimeLongBreak}
-                                        saveSetting={pushSettingToStorage} 
-                                        longBreakInterval={longBreakInterval}
-                                        setLongBreakInterval={setLongBreakInterval}                                                                         
-                                    />
-                                }
+                            element= {                                
+                                <Setting 
+                                    setTimePomo={setTimePomo}
+                                    timePomo={timePomo}
+                                    timeBreak={timeBreak}
+                                    setTimeBreak={setTimeBreak}
+                                    timeLongBreak={timeLongBreak}
+                                    setTimeLongBreak={setTimeLongBreak}
+                                    saveSetting={pushSettingToStorage} 
+                                    longBreakInterval={longBreakInterval}
+                                    setLongBreakInterval={setLongBreakInterval}                                                                         
+                                />
+                            }
                         /> 
-                        <Route 
-                            errorElement={<ErrorPage />}
+                        <Route                             
                             path="/report" 
                             element={<Report />}
                         />                                                                             
                     </Routes>
                 </div>
             </main>
-        </>
+        </BrowserRouter>
     )
 }
 
