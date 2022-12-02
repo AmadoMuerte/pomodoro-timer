@@ -5,33 +5,14 @@ import Setting from '../setting/Setting';
 import Timer from '../timer/Timer';
 import Report from '../report/Report';
 
+import { useSelector } from 'react-redux';
+
 function App(props) {
 
-    //localStorageSetting
-    let storageSettings = 
-    {
-        timePomo: 30, timeBreak: 5,
-        timeLongBreak: 15, longBreakInterval: 4,
-        intervalPassed: 0
-    }
-
- if (localStorage.setting) storageSettings = JSON.parse(localStorage.getItem('setting'))
-    //settings
-    const [timePomo, setTimePomo] = useState(storageSettings.timePomo)
-    const [timeBreak, setTimeBreak] = useState(storageSettings.timeBreak)
-    const [timeLongBreak, setTimeLongBreak] = useState(storageSettings.timeLongBreak)
-    const [longBreakInterval, setLongBreakInterval] = useState(storageSettings.longBreakInterval)
-    const [intervalPassed, setIntervalPassed] = useState(storageSettings.intervalPassed)
-
-    const pushSettingToStorage = () => {
-        const setting = 
-        {
-            timePomo, timeBreak, timeLongBreak,
-            longBreakInterval, intervalPassed
-        }   
-        localStorage.setItem("setting", JSON.stringify(setting))
-    }
-    pushSettingToStorage()
+    const {
+        timePomo, timeBreak, timeLongBreak,
+        longBreakInterval, intervalPassed
+    } = useSelector(state => state.setting)
 
     //localStorageTimer
     let storageTimer = {minutes: timePomo, seconds: 0, timerMode: 'work'} 
@@ -82,10 +63,10 @@ function App(props) {
     const checkTimerMode = () => {
         if (timerMode === 'work') {
             countAllTime()
-            setIntervalPassed(intervalPassed + 1)
+           // setIntervalPassed(intervalPassed + 1)
             if ( intervalPassed >= (longBreakInterval - 1) ) {
                 setTimerMode('longBreak') 
-                setIntervalPassed(0)
+              //  setIntervalPassed(0)
             } else {
                 setTimerMode('break') 
             }
@@ -94,7 +75,7 @@ function App(props) {
             setTimerMode('work') 
         }
         if (timerMode === 'longBreak') {
-            setIntervalPassed(0)
+           // setIntervalPassed(0)
             setTimerMode('work') 
         }
     }
@@ -169,19 +150,7 @@ function App(props) {
 
                         <Route                             
                             path="/setting" 
-                            element= {                                
-                                <Setting 
-                                    setTimePomo={setTimePomo}
-                                    timePomo={timePomo}
-                                    timeBreak={timeBreak}
-                                    setTimeBreak={setTimeBreak}
-                                    timeLongBreak={timeLongBreak}
-                                    setTimeLongBreak={setTimeLongBreak}
-                                    saveSetting={pushSettingToStorage} 
-                                    longBreakInterval={longBreakInterval}
-                                    setLongBreakInterval={setLongBreakInterval}                                                                         
-                                />
-                            }
+                            element= {<Setting />}                                                                                          
                         /> 
                         <Route                             
                             path="/report" 

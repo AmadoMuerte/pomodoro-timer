@@ -1,21 +1,43 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+
 import './Setting.css'
+import { NavLink } from 'react-router-dom';
 import SettingInput from './settingInput/SettingInput';
 
+import { setPomoTime, setBreakTime,
+         setLongBreakTime, LongBreakIntervalTime } from '../../store/slice/setting/settingSlice';
+import { useDispatch, useSelector } from 'react-redux';
+
+
 function Setting(props) {
-
+    const dispatch = useDispatch()
     const {
-            timePomo, setTimePomo,
-            timeBreak, setTimeBreak, 
-            timeLongBreak, setTimeLongBreak,
-            saveSetting, longBreakInterval, setLongBreakInterval
-            
-        } = props
+        timePomo, timeBreak, timeLongBreak,
+        longBreakInterval, intervalPassed
+    } = useSelector(state => state.setting)
 
-    const funcSaveSetting = () => {
-        saveSetting()
+    const pushSettingToStorage = () => {
+        const setting = 
+        {
+            timePomo, timeBreak, timeLongBreak,
+            longBreakInterval, intervalPassed
+        }   
+        localStorage.setItem("setting", JSON.stringify(setting))
     }
+    pushSettingToStorage()
+
+    const setPomo = (action) => { 
+        dispatch(setPomoTime(action))
+    }
+    const setBreak = (action) => { 
+        dispatch(setBreakTime(action))
+    }
+    const setLongBreak = (action) => { 
+        dispatch(setLongBreakTime(action))
+    }
+    const setLongBreakInterval = (action) => { 
+        dispatch(LongBreakIntervalTime(action))
+    }   
 
     return (
         <div className='setting'>
@@ -28,8 +50,7 @@ function Setting(props) {
                         </p>
                         <NavLink 
                             className={'setting__btnBack'} 
-                            to={`/`}
-                            onClick={funcSaveSetting}
+                            to={`/`}                            
                         >
                             <p>X</p>
                         </NavLink>
@@ -38,29 +59,29 @@ function Setting(props) {
                         <div className='setting__timer'>
                             <p>Pomodoro</p>
                             <SettingInput 
-                                inputValue={timePomo} 
-                                valueChanger={setTimePomo}
+                                inputValue={timePomo}                                 
+                                setValueToState={setPomo}
                             />
                         </div>
                         <div className='setting__timer'>
                             <p>Short Break</p>
                             <SettingInput 
                                 inputValue={timeBreak} 
-                                valueChanger={setTimeBreak}
+                                setValueToState={setBreak}
                                 />
                         </div>
                         <div className='setting__timer'>
                             <p>Long Break</p>                        
                             <SettingInput 
                             inputValue={timeLongBreak} 
-                            valueChanger={setTimeLongBreak}
+                            setValueToState={setLongBreak}
                             />
                         </div>
                         <div className='setting__timer'>
                             <p>Pomodoro Interval</p>                        
                             <SettingInput 
                             inputValue={longBreakInterval} 
-                            valueChanger={setLongBreakInterval}
+                            setValueToState={setLongBreakInterval}
                             />
                         </div>
                     </div>
