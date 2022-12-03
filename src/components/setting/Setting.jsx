@@ -8,19 +8,20 @@ import { setPomoTime, setBreakTime,
        } from '../../store/slice/setting/settingSlice';
 
 import { useDispatch, useSelector } from 'react-redux';
+import SoundBtn from './soundBtn/SoundBtn';
 
 function Setting(props) {
     const dispatch = useDispatch()
     const {
         timePomo, timeBreak, timeLongBreak,
-        longBreakInterval
+        longBreakInterval, sound
     } = useSelector(state => state.setting)
 
     const pushSettingToStorage = () => {
         const setting = 
         {
             timePomo, timeBreak, timeLongBreak,
-            longBreakInterval
+            longBreakInterval, sound
         }   
         localStorage.setItem("setting", JSON.stringify(setting))
     }
@@ -83,6 +84,10 @@ function Setting(props) {
                             inputValue={longBreakInterval} 
                             setValueToState={setLongBreakInterval}
                             />
+                        </div>
+                        <div className='setting__timer'>
+                            <p>Sound</p>
+                            <SoundBtn />
                         </div>
                     </div>
                 </div>                                                                      

@@ -5,23 +5,34 @@ import TimerNav from '../../components/timerNav/TimerNav';
 import TimerButton from '../../components/timerButton/TimerButton';
 import TimerAnimation from './timerAnimation/TimerAnimation';
 
+import sound_01 from '../../sounds/01.mp3'
+import sound_02 from '../../sounds/02.mp3'
+import sound_03 from '../../sounds/03.mp3'
+import sound_04 from '../../sounds/04.mp3'
+
 import { useDispatch, useSelector } from 'react-redux';
 import 
     { 
     checkTimerMode, changeModeTime,
     changeSeconds, changeMinutes , changePause
     } from '../../store/slice/timer/timerSlice'
-
+import useSound from 'use-sound';
 
 function Timer(props) {
+    const [soundOne] = useSound(sound_01)
+    const [soundTwo] = useSound(sound_02)
+    const [soundThree] = useSound(sound_03)
+    const [soundFour] = useSound(sound_04)
+
     const dispatch = useDispatch()
     const {
         minutes, seconds, paused, intervalPassed
     } = useSelector(state => state.timer)
 
     const {timePomo, timeBreak,
-           timeLongBreak, longBreakInterval
+           timeLongBreak, longBreakInterval, sound
     } = useSelector(state => state.setting)
+
 
     const pause = () => { 
         if (paused) { 
@@ -31,6 +42,18 @@ function Timer(props) {
                 dispatch(changeSeconds(0))
             }
         } else dispatch(changePause(true))
+    }
+
+    const playSound = () => {
+        if (sound === 'sound one') {
+            soundOne()
+        } else if (sound === 'sound two') {
+            soundTwo()
+        } else if (sound === 'sound three') {
+            soundThree()
+        } else if (sound === 'sound four') {
+            soundFour()
+        }
     }
 
     let timer = `${minutes}:${seconds}`
@@ -53,6 +76,7 @@ function Timer(props) {
                 dispatch(changeSeconds(59))
             }
             if (minutes === 0 && seconds === 0) { 
+                playSound()
                 dispatch(changeSeconds(0))
                 dispatch(changePause(false))           
                 dispatch(checkTimerMode(longBreakInterval))                

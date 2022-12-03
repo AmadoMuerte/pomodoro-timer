@@ -4,7 +4,8 @@ let initialState = {
     timePomo: 30, 
     timeBreak: 5,
     timeLongBreak: 15, 
-    longBreakInterval: 4
+    longBreakInterval: 4,
+    sound: "soundOne"
 }
 if (localStorage.setting) initialState = JSON.parse(localStorage.getItem('setting'))
 
@@ -24,11 +25,14 @@ export const settingSlice = createSlice({
         LongBreakIntervalTime (state, action) {
             state.longBreakInterval = action.payload                   
         },
+        changeSound (state, action) {
+            state.sound = action.payload    
+        }
         
     }
 }) 
 
 export const { setPomoTime, setBreakTime,
-               setLongBreakTime, LongBreakIntervalTime } = settingSlice.actions
+               setLongBreakTime, LongBreakIntervalTime, changeSound  } = settingSlice.actions
 
 export default settingSlice.reducer
