@@ -1,10 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-import sound_01 from '../../../sounds/01.mp3'
-import sound_02 from '../../../sounds/02.mp3'
-import sound_03 from '../../../sounds/03.mp3'
-import sound_04 from '../../../sounds/04.mp3'
-
 const initialState = {
     minutes:  30,
     seconds: 0,
