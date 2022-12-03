@@ -3,7 +3,6 @@ import './TimerButton.css'
 function TimerButton(props) {
 
     let btnName = 'Start';
-
         if (props.paused) {
             btnName = 'Stop'
         } else { btnName = 'Start' }

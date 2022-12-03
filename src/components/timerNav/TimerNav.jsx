@@ -1,19 +1,21 @@
 
 import './TimerNav.css'
-
+import {changeMode} from '../../store/slice/timer/timerSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 function TimerNav(props) {
-    const { setTimerMode, timerMode} = props
+    const timerMode = useSelector(state => state.timer.timerMode)
+    const dispatch = useDispatch()
 
     const timerPomo = () => {
-        setTimerMode('work')                    
+        dispatch(changeMode('work'))         
     }
 
     const timerBreak = () => {
-        setTimerMode('break')               
+        dispatch(changeMode('break'))                   
     }
     const timerLongBreak = () => {
-        setTimerMode('longBreak')                       
+        dispatch(changeMode('longBreak'))                          
     }
 
     let classItemPomo = ''

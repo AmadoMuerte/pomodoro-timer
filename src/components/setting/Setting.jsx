@@ -1,26 +1,26 @@
 import React from 'react';
-
 import './Setting.css'
 import { NavLink } from 'react-router-dom';
 import SettingInput from './settingInput/SettingInput';
 
 import { setPomoTime, setBreakTime,
-         setLongBreakTime, LongBreakIntervalTime } from '../../store/slice/setting/settingSlice';
-import { useDispatch, useSelector } from 'react-redux';
+         setLongBreakTime, LongBreakIntervalTime 
+       } from '../../store/slice/setting/settingSlice';
 
+import { useDispatch, useSelector } from 'react-redux';
 
 function Setting(props) {
     const dispatch = useDispatch()
     const {
         timePomo, timeBreak, timeLongBreak,
-        longBreakInterval, intervalPassed
+        longBreakInterval
     } = useSelector(state => state.setting)
 
     const pushSettingToStorage = () => {
         const setting = 
         {
             timePomo, timeBreak, timeLongBreak,
-            longBreakInterval, intervalPassed
+            longBreakInterval
         }   
         localStorage.setItem("setting", JSON.stringify(setting))
     }

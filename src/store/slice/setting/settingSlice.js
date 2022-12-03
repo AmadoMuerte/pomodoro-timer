@@ -4,8 +4,7 @@ let initialState = {
     timePomo: 30, 
     timeBreak: 5,
     timeLongBreak: 15, 
-    longBreakInterval: 4,
-    intervalPassed: 0
+    longBreakInterval: 4
 }
 if (localStorage.setting) initialState = JSON.parse(localStorage.getItem('setting'))
 
