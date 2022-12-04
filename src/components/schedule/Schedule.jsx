@@ -43,6 +43,7 @@ function Schedule(props) {
           usePointStyle: true,
           color: 'white',
           padding: 10, 
+          
         }
       }
     },
@@ -62,7 +63,7 @@ function Schedule(props) {
 
   return (
       <div className='schedule'>
-          <Bar data={data} options={options} />
+          <Bar data={data} options={options}/>
       </div>
   );
 }

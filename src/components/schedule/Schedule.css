@@ -1,15 +1,17 @@
 .schedule {
     width: 900px;
+    height: 300px;
 }
 
 @media (max-width: 450px) {
     .schedule {
-        width: 350px;
+        width: 380px;
+        height: 200px
     }
 }
 
 @media (max-width: 400px) {
     .schedule {
-        width: 250px;
+        width: 340px;
     } 
 }
