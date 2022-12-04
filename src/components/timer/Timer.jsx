@@ -64,6 +64,7 @@ function Timer(props) {
                 dispatch(changeSeconds(59))
             }
             if (minutes === 0 && seconds === 0) { 
+                
                 playSound()
                 dispatch(changeSeconds(0))
                 dispatch(changePause(false))           
