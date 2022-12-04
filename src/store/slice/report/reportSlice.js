@@ -1,7 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    allTime: 0
+    timeToday: 0,
+    weekWork: {
+        Monday: 0,
+        Tuesday: 0,
+        Wednesday: 0,
+        Thursday : 0,
+        friday: 0,
+        saturday: 0,
+        sunday: 0
+    }
 }
 
 export const reportSlice = createSlice({
@@ -9,7 +18,7 @@ export const reportSlice = createSlice({
     initialState,
     reducers: {
         countWorkTime (state, action) {
-            state.allTime += action.payload
+            state.timeToday += action.payload
         },
 
     }
