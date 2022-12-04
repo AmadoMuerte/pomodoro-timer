@@ -1,17 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+let initialState = {
     timeToday: 0,
-    weekWork: {
-        Monday: 0,
-        Tuesday: 0,
-        Wednesday: 0,
-        Thursday : 0,
-        friday: 0,
-        saturday: 0,
-        sunday: 0
-    }
+    weekWork: [0, 0, 0, 0, 0, 0, 0]
 }
+
+if (localStorage.report) initialState = JSON.parse(localStorage.getItem('report'))
 
 export const reportSlice = createSlice({
     name: 'report',
@@ -20,10 +14,12 @@ export const reportSlice = createSlice({
         countWorkTime (state, action) {
             state.timeToday += action.payload
         },
-
+        updateWeek (state, action) {
+            state.weekWork[action.payload] = state.timeToday
+        }
     }
 })
 
-export const { countWorkTime } = reportSlice.actions
+export const { countWorkTime, updateWeek } = reportSlice.actions
 
 export default reportSlice.reducer

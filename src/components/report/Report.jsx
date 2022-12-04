@@ -1,15 +1,35 @@
 import React from 'react';
 import './Report.css'
 
-import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import {updateWeek} from '../../store/slice/report/reportSlice'
+import { useSelector, useDispatch } from 'react-redux';
 
+import { NavLink } from 'react-router-dom';
 
 import Schedule from '../schedule/Schedule';
 
 function Report(props) {
 
     const timeToday = useSelector(state => state.report.timeToday)
+    const weekWork = useSelector(state => state.report.weekWork)
+
+    const dispatch = useDispatch() 
+
+    const pushReportToStorage = () => {
+        const report = 
+        {
+            timeToday, weekWork
+        }   
+        localStorage.setItem("report", JSON.stringify(report))
+    }
+
+    pushReportToStorage()
+
+    const updateWeekWork = () => {
+        let day = new Date().getDay()
+        dispatch(updateWeek(day))
+    }
+   updateWeekWork()
 
     const countHours = () => {
         let hours = 0
@@ -18,7 +38,6 @@ function Report(props) {
             hours = Math.floor(timeToday / 60)
             minutes = timeToday % 60
         }
-
         let time = `${hours} hours ${minutes} minutes`
 
         if (timeToday < 60) {
@@ -58,7 +77,7 @@ function Report(props) {
                         </div>
                         <div className='report__bottom'>
                             Today your work time - {countHours()} 
-                            <Schedule />
+                            <Schedule weekWork={weekWork}/>
                         </div> 
                     </div>
                 </div>

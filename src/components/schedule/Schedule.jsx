@@ -24,27 +24,32 @@ function Schedule(props) {
         Legend
       );
 
-    const labels = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+  const labels = [
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'friday',
+        'saturday',
+        'sunday',
+  ]
 
-    const week = [10, 15, 25, 36, 80, 90, 120]
+  const data = {
+      labels,
+      datasets: [
+        {
+          label: 'minutes',            
+          data: props.weekWork,
+          backgroundColor: 'white',
+        },
+      ],
+  };
 
-    const data = {
-        labels,
-        datasets: [
-          {
-            label: 'Week',
-            data: week,
-            backgroundColor: 'white',
-            color: "black"
-          },
-        ],
-    };
-
-    return (
-        <div className='schedule'>
-            <Bar data={data} />
-        </div>
-    );
+  return (
+      <div className='schedule'>
+          <Bar data={data} />
+      </div>
+  );
 }
 
 export default Schedule;

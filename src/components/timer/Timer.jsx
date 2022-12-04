@@ -19,7 +19,6 @@ import {
 
 import { countWorkTime } from '../../store/slice/report/reportSlice'
 
-
 function Timer(props) {
     const [soundOne] = useSound(sound_01)
     const [soundTwo] = useSound(sound_02)
@@ -59,7 +58,6 @@ function Timer(props) {
 
     const tick = () => {
         if (paused) {
-           // pushTimerToStorage()
             dispatch(changeSeconds(seconds - 1))
             if (seconds === 0) {
                 dispatch(changeMinutes(minutes - 1))
@@ -69,7 +67,6 @@ function Timer(props) {
                 if (timerMode === 'work') {
                     dispatch(countWorkTime(timePomo))
                 }
-                
                 playSound()
                 dispatch(changeSeconds(0))
                 dispatch(changePause(false))           
