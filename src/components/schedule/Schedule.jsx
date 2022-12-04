@@ -21,7 +21,7 @@ function Schedule(props) {
         BarElement,
         Title,
         Tooltip,
-        Legend
+        Legend,
       );
 
   const labels = [
@@ -34,6 +34,20 @@ function Schedule(props) {
         'sunday',
   ]
 
+  const options = {
+    plugins: {
+      legend: {
+        position: 'top',
+        rtl : false,
+        labels: {
+          usePointStyle: true,
+          color: 'white',
+          padding: 10, 
+        }
+      }
+    },
+  }
+
   const data = {
       labels,
       datasets: [
@@ -41,13 +55,14 @@ function Schedule(props) {
           label: 'minutes',            
           data: props.weekWork,
           backgroundColor: 'white',
+          
         },
       ],
   };
 
   return (
       <div className='schedule'>
-          <Bar data={data} />
+          <Bar data={data} options={options} />
       </div>
   );
 }
