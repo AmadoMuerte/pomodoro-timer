@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    allTime: 80
+    allTime: 0
 }
 
 export const reportSlice = createSlice({
@@ -9,13 +9,12 @@ export const reportSlice = createSlice({
     initialState,
     reducers: {
         countWorkTime (state, action) {
-            state.allTime = state.allTime + action.payload
-            console.log(state.allTime)
+            state.allTime += action.payload
         },
 
     }
 })
 
-export const { allWorkTime } = reportSlice.actions
+export const { countWorkTime } = reportSlice.actions
 
 export default reportSlice.reducer

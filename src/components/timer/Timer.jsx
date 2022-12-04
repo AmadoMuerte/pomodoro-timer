@@ -17,6 +17,8 @@ import {
     changeSeconds, changeMinutes , changePause
     } from '../../store/slice/timer/timerSlice'
 
+import { countWorkTime } from '../../store/slice/report/reportSlice'
+
 
 function Timer(props) {
     const [soundOne] = useSound(sound_01)
@@ -26,7 +28,7 @@ function Timer(props) {
 
     const dispatch = useDispatch()
     const {
-        minutes, seconds, paused, intervalPassed
+        minutes, seconds, paused, intervalPassed, timerMode
     } = useSelector(state => state.timer)
 
     const {timePomo, timeBreak,
@@ -64,6 +66,9 @@ function Timer(props) {
                 dispatch(changeSeconds(59))
             }
             if (minutes === 0 && seconds === 0) { 
+                if (timerMode === 'work') {
+                    dispatch(countWorkTime(timePomo))
+                }
                 
                 playSound()
                 dispatch(changeSeconds(0))
