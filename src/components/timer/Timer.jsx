@@ -5,18 +5,18 @@ import TimerNav from '../../components/timerNav/TimerNav';
 import TimerButton from '../../components/timerButton/TimerButton';
 import TimerAnimation from './timerAnimation/TimerAnimation';
 
+import useSound from 'use-sound';
 import sound_01 from '../../sounds/01.mp3'
 import sound_02 from '../../sounds/02.mp3'
 import sound_03 from '../../sounds/03.mp3'
 import sound_04 from '../../sounds/04.mp3'
 
 import { useDispatch, useSelector } from 'react-redux';
-import 
-    { 
+import { 
     checkTimerMode, changeModeTime,
     changeSeconds, changeMinutes , changePause
     } from '../../store/slice/timer/timerSlice'
-import useSound from 'use-sound';
+
 
 function Timer(props) {
     const [soundOne] = useSound(sound_01)
@@ -32,7 +32,6 @@ function Timer(props) {
     const {timePomo, timeBreak,
            timeLongBreak, longBreakInterval, sound
     } = useSelector(state => state.setting)
-
 
     const pause = () => { 
         if (paused) { 
@@ -56,17 +55,6 @@ function Timer(props) {
         }
     }
 
-    let timer = `${minutes}:${seconds}`
-    if (seconds < 10) {
-        timer = `${minutes}:0${seconds}`
-    } else if (minutes < 10) {
-        timer = `0${minutes}:${seconds}`
-    } else if (minutes < 10 && seconds < 10) {
-        timer = `0${minutes}:0${seconds}`
-    } else {
-        timer = `${minutes}:${seconds}`
-    }
-
     const tick = () => {
         if (paused) {
            // pushTimerToStorage()
@@ -88,11 +76,14 @@ function Timer(props) {
         let title
         if (seconds < 10) {
             title = `${minutes}:0${seconds}`
-        } else if (minutes < 10) {
+        }
+        if (minutes < 10) {
             title = `0${minutes}:${seconds}`
-        } else if (minutes < 10 && seconds < 10) {
+        } 
+        if (minutes < 10 && seconds < 10) {
             title = `0${minutes}:0${seconds}`
-        } else {
+        } 
+        if (minutes >= 10 && seconds >= 10) {
             title = `${minutes}:${seconds}`
         }
         return title
@@ -107,15 +98,15 @@ function Timer(props) {
         }        
         const timerID = setInterval(() => tick(), 1000);
         return () => clearInterval(timerID);
-      });
+    })
 
     return (
         <div className='timer'>
             <TimerNav />                          
             <div className='timer__main'>
                 <TimerAnimation 
-                timer={timer}
-                paused={paused}
+                    timer={titleTimes()}
+                    paused={paused}
                 />
             </div>            
             <TimerButton 

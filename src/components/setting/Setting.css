@@ -34,30 +34,7 @@
 
 .setting__btnBack:hover {
     transition: .3s;
-    background-color: #07515b93;
-}
-
-.setting__btnSave {
-    background-color: #0159655f;
-    width: 300px;
-    margin: 0 auto;
-    padding: 5px 10px;
-    transition: .3s;
-    color: white;
-    border-radius: 5px;
-    font-size: 18px;
-    text-align: center;
-    cursor: pointer;
-}
-
-.setting__btnSave:hover {
-    transition: .3s;
-    background-color: #07515b93;
-}
-
-.setting__btn:hover {
-    transition: .3s;
-    background-color: #06778693;
+    background-color: rgb(124, 22, 68);
 }
 
 .setting__head {

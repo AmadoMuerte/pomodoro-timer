@@ -39,7 +39,7 @@ function SoundBtn(props) {
     }
 
     return (
-        <select>
+        <select className='sound'>
             <option hidden>Select sound</option>
             <option onClick={e => selectSound(e)}>sound one</option>
             <option onClick={e => selectSound(e)}>sound two</option>
