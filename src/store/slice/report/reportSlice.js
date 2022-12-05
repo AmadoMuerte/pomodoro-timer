@@ -12,7 +12,7 @@ export const reportSlice = createSlice({
     initialState,
     reducers: {
         countWorkTime (state, action) {
-            state.timeToday = Number(state.timeToday) + Number(action.payload)
+            state.timeToday += Number(action.payload)
         },
         updateWeek (state, action) {
             state.weekWork[action.payload] = state.timeToday
