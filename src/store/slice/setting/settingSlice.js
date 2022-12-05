@@ -5,7 +5,7 @@ let initialState = {
     timeBreak: 5,
     timeLongBreak: 15, 
     longBreakInterval: 4,
-    sound: "soundOne"
+    sound: "sound one"
 }
 if (localStorage.setting) initialState = JSON.parse(localStorage.getItem('setting'))
 

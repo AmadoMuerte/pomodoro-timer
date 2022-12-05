@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 import { changeSound } from '../../../store/slice/setting/settingSlice';
 
 import './SoundBtn.css'
-
 import sound_01 from '../../../sounds/01.mp3'
 import sound_02 from '../../../sounds/02.mp3'
 import sound_03 from '../../../sounds/03.mp3'
@@ -22,7 +21,7 @@ function SoundBtn(props) {
     const selectSound = (e) => {
         if (e.target.value === 'sound one') {
             soundOne()
-            dispatch(changeSound(sound_01))
+            dispatch(changeSound('sound one'))
 
         } else if (e.target.value === 'sound two') {
             soundTwo()

@@ -55,8 +55,7 @@ function Schedule(props) {
         {
           label: 'minutes',            
           data: props.weekWork,
-          backgroundColor: 'white',
-          
+          backgroundColor: 'white',          
         },
       ],
   };

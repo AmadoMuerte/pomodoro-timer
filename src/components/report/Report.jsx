@@ -31,20 +31,26 @@ function Report(props) {
     }
    updateWeekWork()
 
-    const countHours = () => {
+   const countAllWeek = () => {
+        let time = 0
+        weekWork.map(el => time += el)
+        return countHours(time)
+   }
+
+    const countHours = (times) => {
         let hours = 0
         let minutes = 0
-        if (timeToday >= 60) {
-            hours = Math.floor(timeToday / 60)
-            minutes = timeToday % 60
+        if (times >= 60) {
+            hours = Math.floor(times / 60)
+            minutes = times % 60
         }
         let time = `${hours} hours ${minutes} minutes`
 
-        if (timeToday < 60) {
-            if (timeToday > 0 && timeToday < 2) {
-                time = `0 hours ${timeToday} minute`
+        if (time < 60) {
+            if (time > 0 && time < 2) {
+                time = `0 hours ${time} minute`
             } else {
-                time = `0 hours ${timeToday} minutes`
+                time = `0 hours ${time} minutes`
             }
 
         } else {
@@ -76,8 +82,10 @@ function Report(props) {
                             >X</NavLink>
                         </div>
                         <div className='report__bottom'>
-                            Today your work time - {countHours()} 
+                            <p>Today your work time - {countHours(timeToday)} </p>
+                            
                             <Schedule weekWork={weekWork}/>
+                            <p>Your time all week - {countAllWeek()}</p>
                         </div> 
                     </div>
                 </div>
