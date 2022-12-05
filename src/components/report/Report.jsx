@@ -39,32 +39,30 @@ function Report(props) {
 
     const countHours = (times) => {
         let hours = 0
-        let minutes = 0
+        let minutes = times
+        let timeStirng = `0 minute`
         if (times >= 60) {
             hours = Math.floor(times / 60)
             minutes = times % 60
-        }
-        let time = `${hours} hours ${minutes} minutes`
+            timeStirng = `${hours} hours ${minutes} minutes`
 
-        if (time < 60) {
-            if (time > 0 && time < 2) {
-                time = `0 hours ${time} minute`
-            } else {
-                time = `0 hours ${time} minutes`
-            }
-
-        } else {
             if (hours === 1) {
-                time = `${hours} hour ${minutes} minutes`
+                timeStirng = `${hours} hour ${minutes} minutes`
             }
             if (minutes === 1) {
-                time = `${hours} hour ${minutes} minute`
+                timeStirng = `${hours} hour ${minutes} minute`
             }
             if (hours === 1 && minutes === 1) {
-                time = `${hours} hour ${minutes} minute`
+                timeStirng = `${hours} hour ${minutes} minute`
+            }
+        } else {
+            if (minutes < 2) {
+                timeStirng = `${minutes} minute`
+            } else  {
+                timeStirng = `${minutes} minutes`
             }
         }
-        return time
+        return timeStirng
     }
 
     return (
