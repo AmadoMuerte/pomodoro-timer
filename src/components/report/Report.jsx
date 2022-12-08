@@ -8,28 +8,19 @@ import { NavLink } from 'react-router-dom';
 
 import Schedule from '../schedule/Schedule';
 
-function Report(props) {
+function Report({updateReport}) {
 
     const timeToday = useSelector(state => state.report.timeToday)
     const weekWork = useSelector(state => state.report.weekWork)
 
     const dispatch = useDispatch() 
 
-    const pushReportToStorage = () => {
-        const report = 
-        {
-            timeToday, weekWork
-        }   
-        localStorage.setItem("report", JSON.stringify(report))
-    }
-
-    pushReportToStorage()
-
     const updateWeekWork = () => {
         let day = new Date().getDay()
         dispatch(updateWeek(day))
     }
-   updateWeekWork()
+   
+    updateWeekWork()
 
    const countAllWeek = () => {
         let time = 0
@@ -65,6 +56,7 @@ function Report(props) {
         return timeStirng
     }
 
+    
     return (
         <div className='report'>
             <div className="container">

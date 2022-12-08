@@ -27,8 +27,8 @@ export const timerSlice = createSlice ({
         },
         checkTimerMode (state, action) {
             if (state.timerMode === 'work') {
-                state.intervalPassed = state.intervalPassed + 1
-                if ( state.intervalPassed >= (action.payload - 1) ) {
+                state.intervalPassed += 1                
+                if ( state.intervalPassed  >= action.payload) {
                    state.timerMode ='longBreak'                  
                 } else {
                     state.timerMode = 'break' 
