@@ -20,3 +20,11 @@
     transition: .3s;
     background-color: rgb(235, 59, 100);
 }
+
+
+@media (max-width: 399px) {
+    .nav__item {
+        font-size: 20px;
+        padding: 5px 8px;
+    }
+}

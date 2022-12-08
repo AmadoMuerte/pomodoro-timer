@@ -79,7 +79,7 @@ function Setting(props) {
                             />
                         </div>
                         <div className='setting__timer'>
-                            <p>Pomodoro Interval</p>                        
+                            <p>Interval</p>                        
                             <SettingInput 
                             inputValue={longBreakInterval} 
                             setValueToState={setLongBreakInterval}
